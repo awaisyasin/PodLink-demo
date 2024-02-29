@@ -1,6 +1,6 @@
 header {
     width: 100%;
-    padding: 10px 40px;
+    padding: 10px 48px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,7 +22,7 @@ header {
 .navigation {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .navigation ul {

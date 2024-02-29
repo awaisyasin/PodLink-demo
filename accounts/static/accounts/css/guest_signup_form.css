@@ -1,0 +1,43 @@
+body {
+    background-color: #f6f7fb;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    margin: 10px 20px;
+}
+
+.form-group {
+    margin: 5px 0;
+}
+
+.form-group label {
+    color: var(--secondary-color);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
+    padding: 8px 16px;
+    background-color: #f6f7fb;
+    letter-spacing: 0.4px;
+    font-size: 1rem;
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    box-shadow: 0 6px 15px 0 rgba(111, 105, 242, 0.3);
+    background-color: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    box-shadow: 0 6px 15px 0 rgba(111, 105, 242, 0.3);
+    outline: none;
+    border: 1px solid var(--accent-color);
+    background-color: #fff;
+}

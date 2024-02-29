@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="{% static 'css/header.css' %}" />
         <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
         <link rel="stylesheet" href="{% static 'css/buttons.css' %}" />
+        {% block style %}{% endblock style %}
         <title>{% block title %}Document{% endblock title %}</title>
     </head>
     <body>
