@@ -2,10 +2,17 @@
     padding: 8px 16px;
     border: none;
     cursor: pointer;
-    color: #fff;
     font-weight: 400;
-    background-color: var(--primary-color);
     font-size: 1rem;
     border-radius: 5px;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
     box-shadow: 0 6px 15px 0 rgba(111, 105, 242, 0.3);
+}
+
+.btn-primary:active {
+    box-shadow: none;
 }
