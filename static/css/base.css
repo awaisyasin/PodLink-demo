@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Francois+One&family=Poppins:ital,wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Francois+One&family=Poppins:wght@300;400;500;600;700&display=swap");
 
 :root {
     /* Colors */
-    --primary-color: #007bff;
-    --secondary-color: #999999;
-    --accent-color: #66b3ff;
+    --primary-color: #544df0;
+    --secondary-color: #808080;
+    --accent-color: #6F69F2;
     --neutral-color: #ffffff;
 
     /* Fonts */
-    --primary-font: 'Francois One', sans-serif;
-    --secondary-font: 'Poppins', sans-serif;
+    --primary-font: "Francois One", sans-serif;
+    --secondary-font: "Poppins", sans-serif;
 }
 
 * {
@@ -17,8 +17,9 @@
 }
 
 body {
-    font-family: var(--secondary-font);
     width: 100vw;
     margin: 0;
     padding: 0;
+    font-family: var(--secondary-font);
+    font-weight: 400;
 }
