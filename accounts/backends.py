@@ -2,7 +2,7 @@ from django.contrib.auth.backends import ModelBackend
 from django.contrib.auth import get_user_model
 
 
-class CustomAuthenticationBackend(ModelBackend):
+class EmailBackend(ModelBackend):
     def authenticate(self, request, username=None, password=None, **kwargs):
         if username is None:
             return None
@@ -13,7 +13,7 @@ class CustomAuthenticationBackend(ModelBackend):
             return None
 
         try:
-            user = UserModel.objects.get(username=username)
+            user = UserModel.objects.get(email=username)
         except UserModel.DoesNotExist:
             return None
 

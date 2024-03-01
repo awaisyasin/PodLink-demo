@@ -143,7 +143,6 @@ MEDIA_URL = '/media/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-AUTHENTICATION_BACKENDS = [
-    'accounts.backends.CustomAuthenticationBackend',
-    'django.contrib.auth.backends.ModelBackend',
-]
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend',]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
