@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+{% endblock style %}
+
+{% block content %}
+    <p class="heading">Welcome to PodLink!</p>
+    <p class="text">We painlessly match ideal guests and hosts together to produce high quality interviews.</p>
+    <p class="text">Let's get started on your accounts. First up, who are you?</p>
+    <div class=tabs>
+        <a href="{% url 'accounts:host_signup' %}">
+            <div class="tab">
+                <div class="bg-circle">
+                    <i class="fa-solid fa-microphone-lines"></i>
+                </div>
+                <p>I'm A PodCast Host</p>
+            </div>
+        </a>
+        <a href="{% url 'accounts:guest_signup' %}">
+            <div class="tab">
+                <div class="bg-circle">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+                <p>I'm A PodCast Host</p>
+            </div>
+        </a>
+        <a href="{% url 'accounts:host_signup' %}">
+            <div class="tab">
+                <div class="bg-circle">
+                    <i class="fa-solid fa-microphone-lines" style="transform: translateY(-5px);"></i>
+                    <i class="fa-solid fa-circle-user" style="transform: translateY(5px);"></i>
+                </div>
+                <p>I'm Both</p>
+            </div>
+        </a>
+    </div>
+{% endblock content %}
