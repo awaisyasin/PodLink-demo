@@ -6,6 +6,10 @@
 {% endblock style %}
 
 {% block content %}
+    <div class="text">
+        <p>Wellcome to</p>
+        <h1>Podcast Guest Account Registrations</h1>
+    </div>
     <form method='POST'>
         {% csrf_token %}
         {% for field in form %}
