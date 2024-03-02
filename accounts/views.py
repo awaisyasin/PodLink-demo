@@ -35,7 +35,7 @@ def guest_signup_view(request):
 
 
 def email_verify_view(requet, token):
-    user = get_object_or_404(models.GuestProfile, email_verification_token=token)
+    user = get_object_or_404(models.CustomUser, email_verification_token=token)
     if user:
         user.is_email_verified = True
         user.email_verification_token = None
@@ -45,7 +45,21 @@ def email_verify_view(requet, token):
 
 def host_signup_view(request):
     if request.method == 'POST':
-        pass
+        form = forms.HostSignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            token = str(uuid.uuid4())
+            user.email_verification_token = token
+
+            subject = 'Verify your email address'
+            current_site = get_current_site(request)
+            verification_link = f'http://{current_site}/verify-email/{token}/'
+            message = f'Click the following link to verify your email:\n{verification_link}'
+            from_email = 'no-reply@podlink.com'
+            recipient_list = [form.cleaned_data['email'],]
+            send_mail(subject, message, from_email, recipient_list)
+            user.save()
+            return redirect('accounts:login')
     else:
         form = forms.HostSignUpForm()
     return render(request, 'accounts/host_signup_form.html', {'form': form})
