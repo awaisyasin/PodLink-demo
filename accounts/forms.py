@@ -14,38 +14,38 @@ class GuestSignUpForm(UserCreationForm):
         model = models.GuestProfile
         fields = ['first_name', 'last_name', 'year_of_birth', 'email', 'password1', 'password2']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs['autofocus'] = True
+        for field_name, field in self.fields.items():
+            field.required = True
+
 
 class HostSignUpForm(UserCreationForm):
     class Meta:
         model = models.HostProfile
         fields = ['first_name', 'last_name', 'year_of_birth', 'email', 'podcast_name', 'password1', 'password2']
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs['autofocus'] = True
+        for field_name, field in self.fields.items():
+            field.required = True
+
 
 UserModel = get_user_model()
 
-class CustomAutenticationForm(AuthenticationForm):
+class CustomAuthenticationForm(AuthenticationForm):
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={"autofocus": True}))
+
+    class Meta:
+        fields = ['email', 'password']
+
+    # field_order = ['email', 'password']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields.pop('username')
-
-    def clean(self):
-        email = self.cleaned_data.get('email')
-        password = self.cleaned_data.get('password')
-
-        try:
-            user = UserModel.objects.get(email=email)
-        except UserModel.DoesNotExist:
-            raise forms.ValidationError('Invalid email')
-
-        if not user.check_password(password):
-            raise forms.ValidationError('Invalid password')
-
-        if not user.is_active:
-            raise forms.ValidationError('This account is inactive')
-
-        return self.cleaned_data
 
     def get_user(self):
         email = self.cleaned_data['email']

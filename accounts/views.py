@@ -53,7 +53,7 @@ def host_signup_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = forms.CustomAutenticationForm(data=request.POST)
+        form = forms.CustomAuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
             if user.is_email_verified:
@@ -66,9 +66,8 @@ def login_view(request):
             print('first')
             print(form.errors)
     else:
-        form = forms.CustomAutenticationForm()
-        # fields = list(form)
-        # reversed_fields = reversed(fields)
+        form = forms.CustomAuthenticationForm()
+
     return render(request, 'accounts/login.html', {'form': form})
 
 
