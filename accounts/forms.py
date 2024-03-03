@@ -38,10 +38,7 @@ UserModel = get_user_model()
 class CustomAuthenticationForm(AuthenticationForm):
     email = forms.EmailField(label='Email', widget=forms.EmailInput(attrs={"autofocus": True}))
 
-    class Meta:
-        fields = ['email', 'password']
-
-    # field_order = ['email', 'password']
+    field_order = ['email', 'password']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

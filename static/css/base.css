@@ -7,6 +7,12 @@
     --accent-color: #6F69F2;
     --neutral-color: #ffffff;
 
+    /* error, info, warning, succes color */
+    --error-color: #dc3545;
+    --info-color: #2196f3;
+    --warning-color: #ff9800;
+    --success-color: #28a745;
+
     /* Fonts */
     --primary-font: "Francois One", sans-serif;
     --secondary-font: "Poppins", sans-serif;

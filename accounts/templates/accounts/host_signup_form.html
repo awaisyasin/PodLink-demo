@@ -16,6 +16,13 @@
             <div class="form-group">
                 {{ field.label_tag }}<br>
                 {{ field }}
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li class="error">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
             </div>
         {% endfor %}<br>
         <button type="submit" class="btn btn-primary">Submit</button>

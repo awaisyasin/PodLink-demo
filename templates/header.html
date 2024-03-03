@@ -7,5 +7,9 @@
         <li><a href="#">Pricing</a></li>
         <li><a href="#">Discover</a></li>
     </ul>
-    <a class="btn btn-primary btn-login" href="{% url 'accounts:login' %}">Login</a>
+    {% if user.is_authenticated %}
+        <a class="btn btn-primary btn-login" href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+        <a class="btn btn-primary btn-login" href="{% url 'accounts:login' %}">Login</a>
+    {% endif %}
 </nav>
