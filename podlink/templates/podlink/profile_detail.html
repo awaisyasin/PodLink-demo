@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel=stylesheet href="{% static 'podlink/css/profile_detail.css' %}">
+{% endblock style %}
+
+{% block content %}
+    <div class="user-profile">
+        <div class="profile-info">
+            {% if profile.profile_image %}
+                <img class="profile-image" src="{{ profile.profile_image.url }}">
+            {% else %}
+                <img class="profile-image" src="https://www.murrayglass.com/wp-content/uploads/2020/10/avatar-scaled.jpeg">
+            {% endif %}
+            <h2 class="user-name">{{ profile.first_name }} {{ profile.last_name }}</h2>
+            <p class="user-email">{{ profile.email }}</p>
+            <div class="user-analytics">
+                <p class="analytics-heading">Appointments</p>
+                <div class="analytics-numbers">
+                    <div class="analytics-item past">
+                        <p class="analytics-text">5</p>
+                        <p class="analytics-label">Past</p>
+                    </div>
+                    <div class="analytics-item upcoming">
+                        <p class="analytics-text">2</p>
+                        <p class="analytics-label">uppcoming</p>
+                    </div>
+                </div>
+            </div>
+            <a class="btn{% if request.user.id != profile.id %} btn-primary{% else %} btn-secondary{% endif %} send-message-btn" href="#">Send Message</a>
+        </div>
+        <div class="profile-other-info">
+            <ul class="profile-details">
+                <li class="profile-detail-item">Gender</li>
+                <li class="profile-detail-item">Geo Location</li>
+                <li class="profile-detail-item">Language</li>
+                <li class="profile-detail-item">Birth Year</li>
+                <li class="profile-detail-item">Time Availability</li>
+            </ul>
+        </div>
+    </div>
+{% endblock content %}

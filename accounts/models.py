@@ -40,6 +40,7 @@ class GuestProfile(CustomUser):
     YEAR_CHOICES = [(year, str(year)) for year in range(1920, 2024)]
     year_of_birth = models.PositiveIntegerField(choices=YEAR_CHOICES)
 
+
 class HostProfile(CustomUser):
     podcast_name = models.CharField(max_length=255)
     profile_image = models.ImageField(upload_to='host_profiles', null=True, blank=True)

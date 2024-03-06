@@ -1,0 +1,131 @@
+body {
+    background-color: #f2f5f9;
+}
+
+.user-profile {
+    min-width: 600px;
+    min-height: 200px;
+    border-radius: 10px;
+    padding: 20px 0;
+    display: flex;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 2px solid #fff;
+    flex: 1;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.user-name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.user-email {
+    margin-top: 0;
+    color: var(--secondary-color);
+}
+
+.user-analytics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 4px 0;
+}
+
+.analytics-heading {
+    margin: 0;
+    font-weight: 500;
+}
+
+.analytics-numbers {
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+    gap: 40px;
+}
+
+.analytics-numbers::before {
+    content: '';
+    width: 2px;
+    height: 80%;
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+}
+
+.analytics-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    min-width: 100px;
+}
+
+.analytics-text {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.analytics-label {
+    margin: 0;
+    color: var(--secondary-color);
+}
+
+.send-message-btn {
+    margin: 16px 0 0;
+}
+
+.profile-other-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 0;
+    padding: 20px 40px;
+}
+
+.profile-detail-item {
+    border-bottom: 2px solid #fff;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+.profile-detail-item::before {
+    content: "»";
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.profile-detail-item::after {
+    content: "???";
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: var(--primary-color);
+    margin-left: auto;
+}
