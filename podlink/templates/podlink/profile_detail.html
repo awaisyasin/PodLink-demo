@@ -28,7 +28,7 @@
                     </div>
                 </div>
             </div>
-            <a class="btn{% if request.user.id != profile.id %} btn-primary{% else %} btn-secondary{% endif %} send-message-btn" href="#">Send Message</a>
+            <a class="btn{% if request.user.id != profile.id %} btn-primary{% else %} btn-secondary{% endif %} send-message-btn" href="{% url 'chat:room' profile.id %}">Send Message</a>
         </div>
         <div class="profile-other-info">
             <ul class="profile-details">

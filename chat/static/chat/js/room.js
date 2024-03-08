@@ -1,12 +1,12 @@
 const textarea = document.getElementById('chat-log')
 const messageInput = document.getElementById('chat-message-input')
 const submitBtn = document.getElementById('chat-message-submit')
+const currentUserId = JSON.parse(document.getElementById('current-user-id').textContent)
+const otherUserId = JSON.parse(document.getElementById('other-user-id').textContent)
 
-
-const roomName = JSON.parse(document.getElementById('room-name').textContent)
 
 const chatSocket = new WebSocket(
-    'ws://' + window.location.host + '/ws/chat/' + roomName + '/'
+    'ws://' + window.location.host + '/ws/chat/' + otherUserId + '/'
 )
 
 

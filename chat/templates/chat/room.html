@@ -8,7 +8,9 @@
     <textarea id="chat-log" cols="100" rows="10"></textarea><br>
     <input id="chat-message-input" type="text" size="100">
     <input id="chat-message-submit" type="submit" value="Send">
-    {{ room_name|json_script:"room-name" }}
+
+    {{ current_user_id|json_script:"current-user-id" }}
+    {{ other_user_id|json_script:"other-user-id" }}
 
     <script src="{% static 'chat/js/room.js' %}"></script>
 {% endblock content %}
