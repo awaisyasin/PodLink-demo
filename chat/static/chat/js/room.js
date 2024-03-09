@@ -12,8 +12,24 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
-    const message = data.message
-    addMessageToLog(message)
+
+    if (data.message) {
+        const senderId = data.sender_id
+        const message = data.message
+        const timestamp = data.timestamp.substring(11, 16)
+
+        addMessageToLog(senderId, message, timestamp)
+    } else if (data.previous_messages){
+        const previousMessages = data.previous_messages
+
+        previousMessages.forEach(messageData => {
+            const senderId = messageData.sender_id
+            const message = messageData.message
+            const timestamp = messageData.timestamp.substring(11, 16)
+
+            addMessageToLog(senderId, message, timestamp)
+        })
+    }
 }
 
 
@@ -36,25 +52,34 @@ submitBtn.onclick = function() {
         chatSocket.send(JSON.stringify({
             'message': message
         }))
-        messageInput.value = ''
     }
+    messageInput.value = ''
 }
 
 
-function addMessageToLog(content) {
+function addMessageToLog(senderId, content, timestamp) {
     const messageDiv = document.createElement('div')
     messageDiv.classList.add('message')
-
-    // const senderSpan = document.createElement('span')
-    // senderSpan.classList.add('sender')
-    // senderSpan.textContent = sender
+    if (senderId === currentUserId) {
+        messageDiv.classList.add('sent')
+    } else {
+        messageDiv.classList.add('received')
+    }
 
     const contentSpan = document.createElement('span')
     contentSpan.classList.add('content')
     contentSpan.textContent = content
 
-    // messageDiv.appendChild(senderSpan)
+    const checkIcon = document.createElement('img')
+    checkIcon.classList.add('check-icon')
+    checkIcon.src = "../images/check_icon.svg"
+
+    const timeSpan = document.createElement('span')
+    timeSpan.classList.add('time-span')
+    timeSpan.textContent = timestamp
+
     messageDiv.appendChild(contentSpan)
+    messageDiv.appendChild(timeSpan)
 
     chatLog.appendChild(messageDiv)
     chatLog.scrollTop = chatLog.scrollHeight
