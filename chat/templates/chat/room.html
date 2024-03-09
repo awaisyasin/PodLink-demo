@@ -2,12 +2,18 @@
 {% load static %}
 
 {% block style %}
+    <link rel="stylesheet" href="{% static 'chat/css/room.css' %}">
 {% endblock style %}
 
 {% block content %}
-    <textarea id="chat-log" cols="100" rows="10"></textarea><br>
-    <input id="chat-message-input" type="text" size="100">
-    <input id="chat-message-submit" type="submit" value="Send">
+    <div class="chat-log" id="chat-log"></div>
+    <div class="input-bar">
+        <img class="emoji-icon" src="{% static 'chat/images/emoji_icon.svg' %}">
+        <input class="chat-message-input" id="chat-message-input" type="text" placeholder="Message">
+        <button class="chat-message-submit" id="chat-message-submit" type="submit">
+            <img class="emoji-icon" src="{% static 'chat/images/send_icon.svg' %}">
+        </button>
+    </div>
 
     {{ current_user_id|json_script:"current-user-id" }}
     {{ other_user_id|json_script:"other-user-id" }}

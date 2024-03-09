@@ -1,4 +1,4 @@
-const textarea = document.getElementById('chat-log')
+const chatLog = document.getElementById('chat-log')
 const messageInput = document.getElementById('chat-message-input')
 const submitBtn = document.getElementById('chat-message-submit')
 const currentUserId = JSON.parse(document.getElementById('current-user-id').textContent)
@@ -12,7 +12,8 @@ const chatSocket = new WebSocket(
 
 chatSocket.onmessage = function(e) {
     const data = JSON.parse(e.data)
-    textarea.value += (data.message + '\n')
+    const message = data.message
+    addMessageToLog(message)
 }
 
 
@@ -29,11 +30,32 @@ messageInput.onkeyup = function(e) {
 }
 
 
-submitBtn.onclick = function(e) {
-    const message = messageInput.value
-    chatSocket.send(JSON.stringify({
-        'message': message
-    }))
+submitBtn.onclick = function() {
+    const message = messageInput.value.trim()
+    if (message !== '') {
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }))
+        messageInput.value = ''
+    }
+}
 
-    messageInput.value = ''
+
+function addMessageToLog(content) {
+    const messageDiv = document.createElement('div')
+    messageDiv.classList.add('message')
+
+    // const senderSpan = document.createElement('span')
+    // senderSpan.classList.add('sender')
+    // senderSpan.textContent = sender
+
+    const contentSpan = document.createElement('span')
+    contentSpan.classList.add('content')
+    contentSpan.textContent = content
+
+    // messageDiv.appendChild(senderSpan)
+    messageDiv.appendChild(contentSpan)
+
+    chatLog.appendChild(messageDiv)
+    chatLog.scrollTop = chatLog.scrollHeight
 }
