@@ -34,11 +34,11 @@ class ProfileDetailView(DetailView):
 
 class GuestListView(ListView):
     model = GuestProfile
-    context_object_name = 'guest_list'
+    context_object_name = 'profiles'
     template_name = 'podlink/guest_list.html'
 
 
 class HostListView(ListView):
     model = HostProfile
-    context_object_name = 'host_list'
+    context_object_name = 'profiles'
     template_name = 'podlink/host_list.html'

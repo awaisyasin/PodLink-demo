@@ -34,11 +34,19 @@ class CustomUser(AbstractUser):
 
     objects = CustomUserManager()
 
+    class Meta:
+        verbose_name = 'Custom User'
+        verbose_name_plural = 'Custom Users'
+
 
 class GuestProfile(CustomUser):
     profile_image = models.ImageField(upload_to='guest_profiles', null=True, blank=True)
     YEAR_CHOICES = [(year, str(year)) for year in range(1920, 2024)]
     year_of_birth = models.PositiveIntegerField(choices=YEAR_CHOICES)
+
+    class Meta:
+        verbose_name = 'Guest Profile'
+        verbose_name_plural = 'Guest Profiles'
 
 
 class HostProfile(CustomUser):
@@ -46,3 +54,7 @@ class HostProfile(CustomUser):
     profile_image = models.ImageField(upload_to='host_profiles', null=True, blank=True)
     YEAR_CHOICES = [(year, str(year)) for year in range(1920, 2024)]
     year_of_birth = models.PositiveIntegerField(choices=YEAR_CHOICES)
+
+    class Meta:
+        verbose_name = 'Host Profile'
+        verbose_name_plural = 'Host Profiles'

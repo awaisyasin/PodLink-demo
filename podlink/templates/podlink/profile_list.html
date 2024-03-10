@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'podlink/css/profile_list.css' %}">
+{% endblock style %}
+
+{% block content %}
+    <div class="search-container">
+        <div class="search-types">
+            {% url 'podlink:guest_list' as guest_list_url %}
+
+            {% if request.path == guest_list_url %}
+                <a href="{% url 'podlink:guest_list' %}" class="search-type guest-search active"><i class="fa-regular fa-circle-user guest-icon"></i>Guests</a>
+                <a href="{% url 'podlink:host_list' %}" class="search-type host-search"><i class="fa-solid fa-microphone-lines host-icon"></i>Hosts</a>
+            {% else %}
+                <a href="{% url 'podlink:guest_list' %}" class="search-type guest-search"><i class="fa-regular fa-circle-user guest-icon"></i>Guests</a>
+                <a href="{% url 'podlink:host_list' %}" class="search-type host-search active"><i class="fa-solid fa-microphone-lines host-icon"></i>Hosts</a>
+            {% endif %}
+        </div>
+
+        <div class="search-bar">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input class="search-input" id="search-input" type="text" placeholder="Search...">
+            <button class="search-submit" id="search-submit" type="submit">
+                <img class="emoji-icon" src="{% static 'podlink/images/send_icon.svg' %}">
+            </button>
+        </div>
+    </div>
+
+    {% if profiles %}
+        <h3 class="featured">Featured Members</h3>
+
+        <div class="profile-list">
+            {% for profile in profiles %}
+                <div class="profile-card">
+                    <a href="{% url 'podlink:profile_detail' profile.id %}">
+                        {% if profile.profile_image %}
+                            <img class="profile-image" src="{{ profile.profile_image.url }}">
+                        {% else %}
+                            <img class="profile-image" src="https://www.murrayglass.com/wp-content/uploads/2020/10/avatar-scaled.jpeg">
+                        {% endif %}
+                    </a>
+
+                    <p class="profile-name">
+                        {{ profile.first_name }}
+                        {{ profile.last_name }}
+                    </p>
+                </div>
+            {% endfor %}
+        <div>
+    {% endif %}
+{% endblock content %}

@@ -7,13 +7,14 @@
         <li><a href="#">Pricing</a></li>
         <li><a href="{% url 'podlink:guest_list' %}">Explore</a></li>
     </ul>
+
     {% if user.is_authenticated %}
         {% url 'podlink:profile_detail' user.pk as profile_url %}
 
         {% if request.path != profile_url %}
-        <a class="btn btn-primary btn-login" href="{% url 'podlink:profile_detail' user.pk %}">User Panel</a>
+            <a class="btn btn-primary btn-login" href="{% url 'podlink:profile_detail' user.pk %}">User Panel</a>
         {% else %}
-        <a class="btn btn-primary btn-login" href="{% url 'accounts:logout' %}">Logout</a>
+            <a class="btn btn-primary btn-login" href="{% url 'accounts:logout' %}">Logout</a>
         {% endif %}
     {% else %}
         <a class="btn btn-primary btn-login" href="{% url 'accounts:login' %}">Login</a>

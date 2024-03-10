@@ -1,0 +1,103 @@
+body {
+    background-color: #f5f5f5;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.search-types {
+    height: 56px;
+    border-radius: 12px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.search-type {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 24px;
+    color: var(--primary-color);
+}
+
+.search-type.active {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-radius: 12px;
+}
+
+.search-type .guest-icon,
+.search-type .host-icon {
+    margin-right: 4px;
+}
+
+.search-bar {
+    width: 694px;
+    height: 56px;
+    border-radius: 12px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 16px;
+}
+
+.search-bar .search-icon {
+    font-size: 16px;
+}
+
+.search-bar .search-input {
+    font-family: inherit;
+    font-size: 16px;
+    flex: 1;
+    border: 0;
+}
+
+.search-bar .search-input:focus {
+    outline: 0;
+}
+
+.search-bar .search-submit {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.profile-list {
+    max-width: 1000px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+h3.featured {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.profile-card {
+    width: 200px;
+    overflow: hidden;
+    margin: 8px 16px;
+}
+
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+}
