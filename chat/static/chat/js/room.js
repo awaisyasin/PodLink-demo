@@ -70,10 +70,6 @@ function addMessageToLog(senderId, content, timestamp) {
     contentSpan.classList.add('content')
     contentSpan.textContent = content
 
-    const checkIcon = document.createElement('img')
-    checkIcon.classList.add('check-icon')
-    checkIcon.src = "../images/check_icon.svg"
-
     const timeSpan = document.createElement('span')
     timeSpan.classList.add('time-span')
     timeSpan.textContent = timestamp
