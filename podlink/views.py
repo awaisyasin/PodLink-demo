@@ -2,7 +2,7 @@ from typing import Any
 from django.db.models.base import Model as Model
 from django.db.models.query import QuerySet
 from django.shortcuts import render
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 
@@ -30,3 +30,15 @@ class ProfileDetailView(DetailView):
             except HostProfile.DoesNotExist:
                 raise Http404('User profile not found')
         return profile
+
+
+class GuestListView(ListView):
+    model = GuestProfile
+    context_object_name = 'guest_list'
+    template_name = 'podlink/guest_list.html'
+
+
+class HostListView(ListView):
+    model = HostProfile
+    context_object_name = 'host_list'
+    template_name = 'podlink/host_list.html'
